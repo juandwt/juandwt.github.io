@@ -1,34 +1,80 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Newton's prism</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-image: url('wall.jpg'); /* Ruta de la imagen de fondo */
-            background-size: cover; /* Ajusta el tamaño de la imagen para cubrir toda la página */
-            background-position: center; /* Centra la imagen de fondo */
-        }
-        .content {
-            display: inline-block;
-            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente para el contenido */
-            padding: 20px;
-            border-radius: 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newton's Prism</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-image: url('wall.jpg'); /* Reemplaza 'wall.jpg' con la ruta de tu imagen de fondo */
+      background-size: cover;
+      background-position: center;
+    }
+    .name-box {
+      font-size: 2em;
+      color: white;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px); /* Desenfoque */
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      margin-bottom: 100px;
+    }
+    .scene {
+      width: 200px;
+      height: 200px;
+      perspective: 600px;
+    }
+    .diamond {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateX(-30deg) rotateY(-45deg);
+      animation: rotate 10s infinite linear;
+    }
+    .diamond__face {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid #ccc;
+      box-sizing: border-box;
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    }
+    .diamond__face--front  { transform: translateZ(100px); }
+    .diamond__face--back   { transform: rotateY(180deg) translateZ(100px); }
+    .diamond__face--right  { transform: rotateY(90deg) translateZ(100px); }
+    .diamond__face--left   { transform: rotateY(-90deg) translateZ(100px); }
+    .diamond__face--top    { transform: rotateX(90deg) translateZ(100px); }
+    .diamond__face--bottom { transform: rotateX(-90deg) translateZ(100px); }
+    @keyframes rotate {
+      from {
+        transform: rotateX(-30deg) rotateY(-45deg);
+      }
+      to {
+        transform: rotateX(-30deg) rotateY(315deg);
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="content">
-        <h1>Newton's prism</h1>
-        <p>Juan Diego Wilches Torres</p>
+  <div class="name-box">Juan Diego Wilches Torres</div>
+  <div class="scene">
+    <div class="diamond">
+      <div class="diamond__face diamond__face--front"></div>
+      <div class="diamond__face diamond__face--back"></div>
+      <div class="diamond__face diamond__face--right"></div>
+      <div class="diamond__face diamond__face--left"></div>
+      <div class="diamond__face diamond__face--top"></div>
+      <div class="diamond__face diamond__face--bottom"></div>
     </div>
+  </div>
 </body>
 </html>
