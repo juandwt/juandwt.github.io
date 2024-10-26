@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Newton's Prism</title>
 
-
   <style>
     body {
       display: flex;
@@ -14,75 +13,92 @@
       align-items: center;
       height: 100vh;
       margin: 0;
-      background-image: url('wall.jpg'); /* Reemplaza 'wall.jpg' con la ruta de tu imagen de fondo */
+      background-image: url('wall1.jpg'); /* Reemplaza 'wall.jpg' con la ruta de tu imagen de fondo */
       background-size: cover;
       background-position: center;
     }
     .name-box {
       font-size: 1em;
-        color: white;
-        padding: 20px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        border-radius: 10px;
-        margin-bottom: 100px;
-        width: 900px; /* Cambiar el ancho según sea necesario */
-        height: 120px; /* Cambiar la altura según sea necesario */
+      color: black; /* Cambié el color a negro para el texto */
+      padding: 50px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border: 0.1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      margin-bottom: -200px;
+      width: 500px; /* Cambiar el ancho según sea necesario */
+      height: auto; /* Cambiado a auto para ajustar la altura según el contenido */
     }
-    .scene {
-      width: 200px;
-      height: 200px;
-      perspective: 600px;
+    h2 {
+      margin: 10px 0;
     }
-    .diamond {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transform: rotateX(-30deg) rotateY(-45deg);
-      animation: rotate 10s infinite linear;
-    }
-    .diamond__face {
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 2px solid #ccc;
-      box-sizing: border-box;
-      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-    }
-    .diamond__face--front  { transform: translateZ(100px); }
-    .diamond__face--back   { transform: rotateY(180deg) translateZ(100px); }
-    .diamond__face--right  { transform: rotateY(90deg) translateZ(100px); }
-    .diamond__face--left   { transform: rotateY(-90deg) translateZ(100px); }
-    .diamond__face--top    { transform: rotateX(90deg) translateZ(100px); }
-    .diamond__face--bottom { transform: rotateX(-90deg) translateZ(100px); }
-    @keyframes rotate {
-      from {
-        transform: rotateX(-30deg) rotateY(-45deg);
-      }
-      to {
-        transform: rotateX(-30deg) rotateY(315deg);
-      }
+    p, ul {
+      margin: 0;
+      padding: 0 0 10px 20px; /* Añadido margen y padding para mejor presentación */
     }
   </style>
 </head>
 <body>
-    <div class="name-box"> <font size="3"><i>Name:</i> Juan Diego Wilches Torres <br> <br>
+    
+    <div class="name-box">
 
+        <span size="3" color="black">Name:Juan Diego Wilches Torres <br><br>
            Qui genus humanum ingenio superavit
-      
-        </font> </div>
-  <div class="scene">
-    <div class="diamond">
-      <div class="diamond__face diamond__face--front"></div>
-      <div class="diamond__face diamond__face--back"></div>
-      <div class="diamond__face diamond__face--right"></div>
-      <div class="diamond__face diamond__face--left"></div>
-      <div class="diamond__face diamond__face--top"></div>
-      <div class="diamond__face diamond__face--bottom"></div>
+        </span>
+
+        <section>
+            <h2>Perfil Profesional</h2>
+            <p>
+            Como Licenciado en Ciencias Físicas, he desarrollado
+            una sólida base en las diferentes ramas de la física
+            y las matemáticas. Mi disciplina y compromiso se reflejan
+            en mi enfoque dedicado y eficaz para cumplir con todas
+            mis responsabilidades académicas y profesionales. 
+            Además, he tenido la oportunidad de impartir clases 
+            en varias instituciones, preparando a estudiantes para
+            cursos de PreUnal y PreIcfes. Me gusta implementar 
+            el aprendizaje mediado por las TICs y promuevo metodologías
+            como el trabajo colaborativo y la discusión en el aula,
+            fomentando un aprendizaje activo y participativo.
+            </p>
+        </section>
+
+        <section>
+            <h2>Experiencia</h2>
+            <ul>
+                <li>Puesto 1 - Empresa 1 (Año - Año)</li>
+                <li>Puesto 2 - Empresa 2 (Año - Año)</li>
+                <!-- Agrega más experiencia según sea necesario -->
+            </ul>
+        </section>
+
+        <section>
+            <h2>Educación</h2>
+            <ul>
+                <li>Título - Institución (Año - Año)</li>
+                <li>Título - Institución (Año - Año)</li>
+                <!-- Agrega más educación según sea necesario -->
+            </ul>
+        </section>
+
+        <section>
+            <h2>Habilidades</h2>
+            <ul>
+                <li>Habilidad 1</li>
+                <li>Habilidad 2</li>
+                <!-- Agrega más habilidades según sea necesario -->
+            </ul>
+        </section>
+
+        <section>
+            <h2>Conocimientos</h2>
+            <ul>
+                <li>Conocimiento 1</li>
+                <li>Conocimiento 2</li>
+                <!-- Agrega más conocimientos según sea necesario -->
+            </ul>
+        </section>
     </div>
-  </div>
+  
 </body>
 </html>
