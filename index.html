@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Curriculum</title>
 
+  <!-- Model Viewer -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
   <style>
-    /* Variables modo claro */
     :root {
       --bg-color: #ffffff;
       --bg-overlay: rgba(255, 255, 255, 0.7);
@@ -16,7 +18,6 @@
       --btn-text: #fff;
     }
 
-    /* Modo oscuro */
     .dark-mode {
       --bg-color: #121212;
       --bg-overlay: rgba(0, 0, 0, 0.75);
@@ -24,10 +25,6 @@
       --border-color: rgba(255, 255, 255, 0.2);
       --btn-bg: #f0f0f0;
       --btn-text: #333;
-    }
-
-    * {
-      box-sizing: border-box;
     }
 
     body {
@@ -40,14 +37,12 @@
       font-family: sans-serif;
       background-color: var(--bg-color);
       transition: background-color 0.3s ease;
-      font-size: 16px;
     }
 
-    /* Botón flotante redondo */
     .theme-toggle {
       position: fixed;
-      top: 5vh;
-      right: 5vw;
+      top: 100px;
+      right: 50px;
       width: 50px;
       height: 50px;
       cursor: pointer;
@@ -64,18 +59,12 @@
       z-index: 1000;
     }
 
-    .theme-toggle:hover {
-      transform: scale(1.1);
-    }
-
-    /* Botones navegación */
     .nav-buttons {
       display: flex;
       gap: 15px;
       justify-content: center;
-      margin-top: 80px;
+      margin-top: 100px;
       flex-wrap: wrap;
-      padding: 0 10px;
     }
 
     .nav-btn {
@@ -86,29 +75,21 @@
       font-size: 16px;
       cursor: pointer;
       border-radius: 5px;
-      transition: all 0.3s ease;
     }
 
-    .nav-btn:hover {
-      opacity: 0.8;
-    }
-
-    /* Contenedor principal */
     .main-container {
       font-size: 1em;
       color: var(--text-color);
-      padding: 40px;
-      margin: 30px 0;
+      padding: 50px;
+      margin-top: 50px;
       width: 90%;
-      max-width: 700px;
-      transition: all 0.3s ease;
+      max-width: 600px;
     }
 
     h2 {
       margin: 20px 0 10px 0;
       border-bottom: 1px solid var(--text-color);
       display: inline-block;
-      font-size: clamp(18px, 2vw, 26px);
     }
 
     p, ul {
@@ -116,49 +97,22 @@
       padding: 0 0 10px 20px;
       text-align: justify;
       color: var(--text-color);
-      line-height: 1.6;
     }
 
-    li {
-      margin-bottom: 8px;
-    }
-
-    strong {
-      color: var(--text-color);
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 600px) {
-      .nav-buttons {
-        flex-direction: column;
-        align-items: center;
-        margin-top: 60px;
-      }
-
-      .main-container {
-        padding: 20px;
-        width: 95%;
-      }
-
-      .theme-toggle {
-        width: 45px;
-        height: 45px;
-        font-size: 18px;
-      }
-
-      .nav-btn {
-        width: 80%;
-      }
+    model-viewer {
+      width: 100%;
+      max-width: 600px;
+      height: 400px;
+      margin: 40px auto 60px auto;
+      display: block;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Botón modo oscuro -->
   <button class="theme-toggle" id="themeBtn">🌙</button>
 
-  <!-- Botones navegación -->
   <div class="nav-buttons">
     <button class="nav-btn" data-page="curriculum">Curriculum</button>
     <button class="nav-btn" data-page="proyectos">Proyectos</button>
@@ -167,26 +121,22 @@
     <button class="nav-btn" data-page="videos">Videos</button>
   </div>
 
-  <!-- Contenedor -->
   <div class="main-container" id="contentContainer">
-
     <span style="font-size: 1.2em; text-align: center; display: block; margin-bottom:30px;">
       <strong>J U A N &nbsp; D I E G O &nbsp; W I L C H E S &nbsp; T O R R E S</strong>
     </span>
 
     <section>
       <h2>Perfil Profesional</h2>
-      <p>
-        Como Licenciado en Ciencias Físicas, he desarrollado una sólida base en las diferentes ramas de la física y las matemáticas...
-      </p>
+      <p>Como Licenciado en Ciencias Físicas, he desarrollado una sólida base...</p>
     </section>
 
     <section>
       <h2>Experiencia</h2>
       <ul>
-        <li><strong>Grupo Formarte:</strong> Docente de Física y Matemáticas (2024)...</li>
-        <li><strong>Universidad Distrital:</strong> Monitor de Física y Matemáticas (2024)...</li>
-        <li><strong>ITC La Salle:</strong> Practicante en ITC (2023 - 2024)...</li>
+        <li><strong>Grupo Formarte:</strong> Docente de Física y Matemáticas (2024)</li>
+        <li><strong>Universidad Distrital:</strong> Monitor (2024)</li>
+        <li><strong>ITC La Salle:</strong> Practicante (2023 - 2024)</li>
       </ul>
     </section>
 
@@ -197,8 +147,14 @@
         <li>SQL (MySQL)</li>
       </ul>
     </section>
-
   </div>
+
+  <model-viewer
+    src="./dog.glb"
+    alt="Dog 3D model"
+    auto-rotate
+    camera-controls>
+  </model-viewer>
 
   <script>
     const btn = document.getElementById('themeBtn');
@@ -218,9 +174,8 @@
     };
 
     const contentContainer = document.getElementById('contentContainer');
-    const navButtons = document.querySelectorAll('.nav-btn');
 
-    navButtons.forEach(button => {
+    document.querySelectorAll('.nav-btn').forEach(button => {
       button.addEventListener('click', () => {
         const page = button.getAttribute('data-page');
         contentContainer.innerHTML = pages[page] || "";
