@@ -6,90 +6,229 @@
   <title>Curriculum</title>
 
   <style>
+    /* Variables modo claro */
+    :root {
+      --bg-color: #ffffff;
+      --bg-overlay: rgba(255, 255, 255, 0.7);
+      --text-color: #000000;
+      --border-color: rgba(0, 0, 0, 0.2);
+      --btn-bg: #333;
+      --btn-text: #fff;
+    }
+
+    /* Modo oscuro */
+    .dark-mode {
+      --bg-color: #121212;
+      --bg-overlay: rgba(0, 0, 0, 0.75);
+      --text-color: #ffffff;
+      --border-color: rgba(255, 255, 255, 0.2);
+      --btn-bg: #f0f0f0;
+      --btn-text: #333;
+    }
+
     body {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       margin: 0;
-      background-image: url('wall1.jpg'); /* Reemplaza 'wall1.jpg' con la ruta de tu imagen de fondo */
-      background-size: cover;
-      background-position: center;
+      font-family: sans-serif;
+      background-color: var(--bg-color);
+      transition: background-color 0.3s ease;
     }
-    .name-box {
+
+    /* Botón flotante redondo */
+    .theme-toggle {
+      position: fixed;
+      top: 100px;
+      right: 50px;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      background-color: var(--btn-bg);
+      color: var(--btn-text);
+      border: none;
+      border-radius: 50%;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    /* Estilos para los 5 botones */
+    .nav-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 100px;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      background-color: var(--btn-bg);
+      color: var(--btn-text);
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      opacity: 0.8;
+    }
+
+    /* Contenedor principal sin recuadro central */
+    .main-container {
       font-size: 1em;
-      color: black; /* Cambié el color a negro para el texto */
+      color: var(--text-color);
       padding: 50px;
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(10px);
-      border: 0.1px solid rgba(255, 255, 255, 0.9);
-      border-radius: 10px;
-      margin-bottom: -200px;
       margin-top: 50px;
-      width: 500px; /* Cambiar el ancho según sea necesario */
-      height: auto; /* Cambiado a auto para ajustar la altura según el contenido */
+      margin-bottom: 50px;
+      width: 90%;
+      max-width: 600px;
+      transition: all 0.3s ease;
     }
+
     h2 {
-      margin: 10px 0;
+      margin: 20px 0 10px 0;
+      border-bottom: 1px solid var(--text-color);
+      display: inline-block;
     }
+
     p, ul {
       margin: 0;
-      padding: 0 0 10px 20px; /* Añadido margen y padding para mejor presentación */
-      text-align: justify; /* Justifica el texto */
+      padding: 0 0 10px 20px;
+      text-align: justify;
+      color: var(--text-color);
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    strong {
+      color: var(--text-color);
     }
   </style>
 </head>
-<body>
-    
-    <div class="name-box">
 
-        <span style="font-size: 1.2em; color: black; text-align: center; display: block; margin-bottom:30px;">
+<body>
+
+  <!-- Botón redondo con iconos -->
+  <button class="theme-toggle" id="themeBtn">🌙</button>
+
+  <!-- 5 botones -->
+  <div class="nav-buttons">
+    <button class="nav-btn" data-page="curriculum">Curriculum</button>
+    <button class="nav-btn" data-page="proyectos">Proyectos</button>
+    <button class="nav-btn" data-page="fotos">Fotos</button>
+    <button class="nav-btn" data-page="code">Code</button>
+    <button class="nav-btn" data-page="videos">Videos</button>
+  </div>
+
+  <!-- Contenedor del contenido -->
+  <div class="main-container" id="contentContainer">
+    <!-- Contenido original del Curriculum -->
+    <span style="font-size: 1.2em; text-align: center; display: block; margin-bottom:30px;">
+      <strong>J U A N &nbsp; D I E G O &nbsp; W I L C H E S &nbsp; T O R R E S</strong>
+    </span>
+
+    <section>
+      <h2>Perfil Profesional</h2>
+      <p>
+        Como Licenciado en Ciencias Físicas, he desarrollado una sólida base en las diferentes ramas de la física y las matemáticas...
+      </p>
+    </section>
+
+    <section>
+      <h2>Experiencia</h2>
+      <ul>
+        <li><strong>Grupo Formarte:</strong> Docente de Física y Matemáticas (2024)...</li>
+        <li><strong>Universidad Distrital:</strong> Monitor de Física y Matemáticas (2024)...</li>
+        <li><strong>ITC La Salle:</strong> Practicante en ITC (2023 - 2024)...</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Habilidades</h2>
+      <ul>
+        <li>Python (avanzado)</li>
+        <li>SQL (MySQL)</li>
+      </ul>
+    </section>
+  </div>
+
+  <script>
+    const btn = document.getElementById('themeBtn');
+    const body = document.body;
+
+    btn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+
+      if (body.classList.contains('dark-mode')) {
+        btn.textContent = '☀️';
+      } else {
+        btn.textContent = '🌙';
+      }
+    });
+
+    // Páginas: Curriculum tiene el contenido original, las demás están vacías
+    const pages = {
+      curriculum: `
+        <span style="font-size: 1.2em; text-align: center; display: block; margin-bottom:30px;">
           <strong>J U A N &nbsp; D I E G O &nbsp; W I L C H E S &nbsp; T O R R E S</strong>
         </span>
 
         <section>
-            <h2>Perfil Profesional</h2>
-            <p>
-                Como Licenciado en Ciencias Físicas, he desarrollado una sólida base en las diferentes ramas de la física y las matemáticas. Mi disciplina y compromiso se reflejan en mi enfoque dedicado y eficaz para cumplir con todas mis responsabilidades académicas y profesionales. Además, he tenido la oportunidad de impartir clases en varias instituciones, preparando a estudiantes para cursos de PreUnal y PreIcfes. Me gusta implementar el aprendizaje mediado por las TICs y promuevo metodologías como el trabajo colaborativo y la discusión en el aula, fomentando un aprendizaje activo y participativo.
-            </p>
+          <h2>Perfil Profesional</h2>
+          <p>
+            Como Licenciado en Ciencias Físicas, he desarrollado una sólida base en las diferentes ramas de la física y las matemáticas...
+          </p>
         </section>
 
         <section>
-            <h2>Experiencia</h2>
-            <ul>
-                <li><strong>Grupo Formarte:</strong> Docente de Física y Matemáticas (2024) en los programas PreUnal y PreIcfes, brindando asesoría académica durante simulacros y proporcionando instrucción integral para las pruebas de estado.</li>
-                <li><strong>Universidad Distrital Francisco José de Caldas:</strong> Monitor de Física y Matemáticas (2024), brindando acompañamiento y refuerzo en cursos de primer y segundo semestre.</li>
-                <li><strong>Escuela Tecnológica Instituto Central de La Salle:</strong> Practicante en ITC (2023 - 2024), desarrollando actividades de apoyo en los laboratorios de física y fomentando el trabajo colaborativo.</li>
-                <li><strong>Ponente:</strong> XXVI Semana de Enseñanza de la Física 2023 en la Universidad Distrital Francisco José de Caldas, con la ponencia "Análisis de Redes Cristalinas".</li>
-                <li><strong>Tallerista:</strong> XXVII Semana de la Enseñanza de la Física 2024 en la Universidad Distrital, dirigiendo talleres sobre simulación y desarrollo de interfaces gráficas en física.</li>
-            </ul>
+          <h2>Experiencia</h2>
+          <ul>
+            <li><strong>Grupo Formarte:</strong> Docente de Física y Matemáticas (2024)...</li>
+            <li><strong>Universidad Distrital:</strong> Monitor de Física y Matemáticas (2024)...</li>
+            <li><strong>ITC La Salle:</strong> Practicante en ITC (2023 - 2024)...</li>
+          </ul>
         </section>
 
         <section>
-            <h2>Educación</h2>
-            <ul>
-                <li><strong>Licenciatura en Física</strong> (2020 - 2024) - Facultad de Ciencias y Educación, Universidad Distrital Francisco José de Caldas.</li>
-            </ul>
+          <h2>Habilidades</h2>
+          <ul>
+            <li>Python (avanzado)</li>
+            <li>SQL (MySQL)</li>
+          </ul>
         </section>
+      `,
+      proyectos: ``,
+      fotos: ``,
+      code: ``,
+      videos: ``
+    };
 
-        <section>
-            <h2>Habilidades y Conocimientos</h2>
-            <ul>
-                <li>Python (avanzado)</li>
-                <li>C++</li>
-                <li>Microsoft Word, Microsoft Excel</li>
-                <li>SQL (MySQL)</li>
-            </ul>
-        </section>
+    const contentContainer = document.getElementById('contentContainer');
+    const navButtons = document.querySelectorAll('.nav-btn');
 
-        <section>
-            <h2>Idiomas</h2>
-            <ul>
-                <li>Inglés (Lectura, escritura y expresión oral aceptable)</li>
-            </ul>
-        </section>
-    </div>
-  
+    navButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const page = button.getAttribute('data-page');
+        contentContainer.innerHTML = pages[page];
+      });
+    });
+  </script>
+
 </body>
 </html>
