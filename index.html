@@ -140,10 +140,10 @@ const viewer = document.getElementById("viewer");
 
 viewer.addEventListener("load", () => {
   let angle = 0;
-  let speed = 10; // velocidad inicial rápida
+  let speed = 50; // velocidad inicial rápida
 
   const spinFast = setInterval(() => {
-    angle += speed;
+    angle .= speed;
     viewer.cameraOrbit = `${angle}deg 75deg 2.5m`;
 
     speed *= 0.9; // desaceleración
