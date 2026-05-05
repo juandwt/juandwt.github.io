@@ -128,38 +128,14 @@
     
      
 
-<model-viewer
-  id="viewer"
-  src="./dog.glb"
-  alt="Dog 3D model"
-  camera-controls>
-</model-viewer>
+    <model-viewer
+    src="./space_boi.glb"
+    alt="Dog 3D model"
+    auto-rotate
+    auto-rotate-speed="2"
+    camera-controls>
+    </model-viewer>
 
-<script>
-const viewer = document.getElementById("viewer");
-
-viewer.addEventListener("load", () => {
-  let angle = 0;
-  let speed = 50; // velocidad inicial rápida
-
-  const spinFast = setInterval(() => {
-    angle .= speed;
-    viewer.cameraOrbit = `${angle}deg 75deg 2.5m`;
-
-    speed *= 0.9; // desaceleración
-
-    if (speed < 0.5) {
-      clearInterval(spinFast);
-      viewer.setAttribute("auto-rotate", "");
-      viewer.setAttribute("auto-rotate-delay", "0");
-      viewer.setAttribute("rotation-per-second", "30deg");
-    }
-  }, 30);
-});
-</script>
-
-
-    
 
     <section>
       <h2>Perfil Profesional</h2>
