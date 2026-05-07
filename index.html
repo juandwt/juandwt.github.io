@@ -5,38 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Curriculum</title>
 
-  <!-- Model Viewer -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
   <style>
     :root {
       --bg-color: #ffffff;
-      --bg-overlay: rgba(255, 255, 255, 0.7);
-      --text-color: #000000;
-      --border-color: rgba(0, 0, 0, 0.2);
+      --text-color: #000;
       --btn-bg: #333;
       --btn-text: #fff;
     }
 
     .dark-mode {
       --bg-color: #121212;
-      --bg-overlay: rgba(0, 0, 0, 0.75);
-      --text-color: #ffffff;
-      --border-color: rgba(255, 255, 255, 0.2);
+      --text-color: #fff;
       --btn-bg: #f0f0f0;
       --btn-text: #333;
     }
 
     body {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      min-height: 100vh;
       margin: 0;
       font-family: sans-serif;
-      background-color: var(--bg-color);
-      transition: background-color 0.3s ease;
+      background: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
     }
 
     .theme-toggle {
@@ -45,172 +39,165 @@
       right: 50px;
       width: 50px;
       height: 50px;
-      cursor: pointer;
-      background-color: var(--btn-bg);
-      color: var(--btn-text);
-      border: none;
       border-radius: 50%;
-      font-size: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border: none;
+      cursor: pointer;
+      background: var(--btn-bg);
+      color: var(--btn-text);
       z-index: 1000;
     }
 
     .nav-buttons {
       display: flex;
       gap: 15px;
-      justify-content: center;
       margin-top: 100px;
       flex-wrap: wrap;
     }
 
     .nav-btn {
-      background-color: var(--btn-bg);
-      color: var(--btn-text);
-      border: none;
       padding: 10px 20px;
-      font-size: 16px;
+      border: none;
       cursor: pointer;
+      background: var(--btn-bg);
+      color: var(--btn-text);
       border-radius: 5px;
     }
 
     .main-container {
-      font-size: 1em;
-      color: var(--text-color);
-      padding: 50px;
-      margin-top: 50px;
       width: 90%;
       max-width: 1000px;
+      padding: 40px;
+      text-align: center;
     }
 
-    h2 {
-      margin: 20px 0 10px 0;
-      border-bottom: 1px solid var(--text-color);
-      display: inline-block;
+    /* 🐶 DOG ORIGINAL (NO TOCAR) */
+    model-viewer {
+      width: 600px;
+      height: 400px;
+      margin: 40px auto;
+      display: block;
     }
 
-    p, ul {
-      margin: 0;
-      padding: 0 0 10px 20px;
-      text-align: justify;
-      color: var(--text-color);
-    }
-
-    /* 👇 MODELOS EN FILA */
     .model-row {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 30px;
+      gap: 10px;
+      flex-wrap: nowrap;
+      margin-top: 10px;
     }
 
+
     .model-row model-viewer {
-      width: 300px;
+      width: 400px;
       height: 300px;
+      margin: 0;
     }
+
   </style>
 </head>
 
 <body>
 
-  <button class="theme-toggle" id="themeBtn">🌙</button>
+<button class="theme-toggle" id="themeBtn">🌙</button>
 
-  <div class="nav-buttons">
-    <button class="nav-btn" data-page="curriculum">Curriculum</button>
-    <button class="nav-btn" data-page="proyectos">Proyectos</button>
-    <button class="nav-btn" data-page="fotos">Fotos</button>
-    <button class="nav-btn" data-page="code">Code</button>
-    <button class="nav-btn" data-page="videos">Videos</button>
-  </div>
+<div class="nav-buttons">
+  <button class="nav-btn" data-page="curriculum">Curriculum</button>
+  <button class="nav-btn" data-page="proyectos">Proyectos</button>
+  <button class="nav-btn" data-page="fotos">Fotos</button>
+  <button class="nav-btn" data-page="code">Code</button>
+  <button class="nav-btn" data-page="videos">Videos</button>
+</div>
+
+<div class="main-container" id="content">
 
   <div class="main-container" id="contentContainer">
     <span style="font-size: 1.2em; text-align: center; display: block; margin-bottom:30px;">
       <strong>J U A N &nbsp; D I E G O &nbsp; W I L C H E S &nbsp; T O R R E S</strong>
     </span>
 
-    <model-viewer
-      src="./dog.glb"
-      alt="Dog 3D model"
-      auto-rotate
-      camera-controls>
-    </model-viewer>
+  <model-viewer
+    src="./dog.glb"
+    alt="Dog"
+    auto-rotate
+    camera-controls
+    interaction-prompt="none">
+  </model-viewer>
 
-    <section>
-      <h2>Perfil Profesional</h2>
-      <p>Como Licenciado en Ciencias Físicas, he desarrollado una sólida base...</p>
-    </section>
+<div>
+  <section>
+    <h2>Perfil Profesional</h2>
+    <p>
+      Como Licenciado en Ciencias Físicas, he desarrollado una sólida base...
+    </p>
+  </section>
 
-    <section>
-      <h2>Experiencia</h2>
-      <ul>
-        <li><strong>Grupo Formarte:</strong> Docente de Física y Matemáticas (2024)</li>
-        <li><strong>Universidad Distrital:</strong> Monitor (2024)</li>
-        <li><strong>ITC La Salle:</strong> Practicante (2023 - 2024)</li>
-      </ul>
-    </section>
+  <section>
+    <h2>Experiencia</h2>
+    <ul>
+      <li><strong>Grupo Formarte:</strong> Docente de Física y Matemáticas (2024)</li>
+      <li><strong>Universidad Distrital:</strong> Monitor (2024)</li>
+      <li><strong>ITC La Salle:</strong> Practicante (2023 - 2024)</li>
+    </ul>
+  </section>
 
-    <section>
-      <h2>Habilidades</h2>
-      <ul>
-        <li>Python (avanzado)</li>
-        <li>SQL (MySQL)</li>
-      </ul>
-    </section>
-  </div>
+  <section>
+    <h2>Habilidades</h2>
+    <ul>
+      <li>Python (avanzado)</li>
+      <li>SQL (MySQL)</li>
+    </ul>
+  </section>
+</div>
 
-  <script>
-    const btn = document.getElementById('themeBtn');
-    const body = document.body;
+</div>
 
-    btn.addEventListener('click', () => {
-      body.classList.toggle('dark-mode');
-      btn.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
-    });
+<script>
+const btn = document.getElementById("themeBtn");
+const body = document.body;
 
-    const pages = {
-      curriculum: document.getElementById('contentContainer').innerHTML,
+btn.onclick = () => {
+  body.classList.toggle("dark-mode");
+  btn.textContent = body.classList.contains("dark-mode") ? "☀️" : "🌙";
+};
 
-      proyectos: `<h2>Proyectos</h2><p>Contenido de proyectos...</p>`,
+const content = document.getElementById("content");
 
-      fotos: `<h2>Fotos</h2><p>Galería en construcción...</p>`,
+/* 🔥 SOLO CAMBIA "CODE", LO DEMÁS NO TOCA EL CV */
+document.querySelectorAll(".nav-btn").forEach(b => {
+  b.onclick = () => {
+    const page = b.dataset.page;
 
-      code: `
-        <h2>Modelos Orbitales</h2>
+    if (page === "code") {
+      content.innerHTML = `
+        <h2>Orbital Models</h2>
+
         <div class="model-row">
-
-          <model-viewer src="./orbital_310.glb"
-            auto-rotate
-            camera-controls>
-          </model-viewer>
-
-          <model-viewer src="./orbital_320.glb"
-            auto-rotate
-            camera-controls>
-          </model-viewer>
-
-          <model-viewer src="./orbital_321.glb"
-            auto-rotate
-            camera-controls>
-          </model-viewer>
-
+          <model-viewer src="./orbital_310.glb" auto-rotate camera-controls></model-viewer>
+          <model-viewer src="./orbital_320.glb" auto-rotate camera-controls></model-viewer>
+          <model-viewer src="./orbital_321.glb" auto-rotate camera-controls></model-viewer>
         </div>
-      `,
+      `;
+    }
 
-      videos: `<h2>Videos</h2><p>Sección de videos...</p>`
-    };
+    if (page === "curriculum") {
+      location.reload(); // 🔥 vuelve al estado original sin romper diseño
+    }
 
-    const contentContainer = document.getElementById('contentContainer');
+    if (page === "proyectos") {
+      content.innerHTML = "<h2>Proyectos</h2><p>...</p>";
+    }
 
-    document.querySelectorAll('.nav-btn').forEach(button => {
-      button.addEventListener('click', () => {
-        const page = button.getAttribute('data-page');
-        contentContainer.innerHTML = pages[page] || "";
-      });
-    });
-  </script>
+    if (page === "fotos") {
+      content.innerHTML = "<h2>Fotos</h2><p>...</p>";
+    }
+
+    if (page === "videos") {
+      content.innerHTML = "<h2>Videos</h2><p>...</p>";
+    }
+  };
+});
+</script>
 
 </body>
 </html>
