@@ -54,8 +54,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
       z-index: 1000;
     }
 
@@ -83,7 +81,7 @@
       padding: 50px;
       margin-top: 50px;
       width: 90%;
-      max-width: 600px;
+      max-width: 1000px;
     }
 
     h2 {
@@ -99,12 +97,19 @@
       color: var(--text-color);
     }
 
-    model-viewer {
-      width: 100%;
-      max-width: 600px;
-      height: 400px;
-      margin: 40px auto 60px auto;
-      display: block;
+    /* 👇 MODELOS EN FILA */
+    .model-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .model-row model-viewer {
+      width: 300px;
+      height: 300px;
     }
   </style>
 </head>
@@ -125,16 +130,13 @@
     <span style="font-size: 1.2em; text-align: center; display: block; margin-bottom:30px;">
       <strong>J U A N &nbsp; D I E G O &nbsp; W I L C H E S &nbsp; T O R R E S</strong>
     </span>
-    
-     
 
     <model-viewer
-    src="./dog.glb"
-    alt="Dog 3D model"
-    auto-rotate
-    camera-controls>
+      src="./dog.glb"
+      alt="Dog 3D model"
+      auto-rotate
+      camera-controls>
     </model-viewer>
-
 
     <section>
       <h2>Perfil Profesional</h2>
@@ -159,8 +161,6 @@
     </section>
   </div>
 
- 
-
   <script>
     const btn = document.getElementById('themeBtn');
     const body = document.body;
@@ -172,10 +172,34 @@
 
     const pages = {
       curriculum: document.getElementById('contentContainer').innerHTML,
-      proyectos: ``,
-      fotos: ``,
-      code: ``,
-      videos: ``
+
+      proyectos: `<h2>Proyectos</h2><p>Contenido de proyectos...</p>`,
+
+      fotos: `<h2>Fotos</h2><p>Galería en construcción...</p>`,
+
+      code: `
+        <h2>Modelos Orbitales</h2>
+        <div class="model-row">
+
+          <model-viewer src="./orbital_310.glb"
+            auto-rotate
+            camera-controls>
+          </model-viewer>
+
+          <model-viewer src="./orbital_320.glb"
+            auto-rotate
+            camera-controls>
+          </model-viewer>
+
+          <model-viewer src="./orbital_321.glb"
+            auto-rotate
+            camera-controls>
+          </model-viewer>
+
+        </div>
+      `,
+
+      videos: `<h2>Videos</h2><p>Sección de videos...</p>`
     };
 
     const contentContainer = document.getElementById('contentContainer');
